@@ -1,8 +1,7 @@
+from __future__ import print_function  # so works on Python 2 and 3 alike
+from colors import red, green, blue, yellow
+
 checklist = list()
-checklist.append('Blue')
-print(checklist)
-checklist.append('Orange')
-print(checklist)
 
 
 def create(item):
@@ -28,23 +27,60 @@ def list_all_items():
         index += 1
 
 
+def mark_completed(index):
+    checklist[index] = green('√') + checklist[index]
+
+
+def user_input(prompt):
+
+    user_input = input(prompt)
+    return user_input
+
+
+def select(function_code):
+    if function_code == 'C':
+        input_item = user_input('Input item:')
+        create(input_item)
+    elif function_code == 'R':
+        item_index = user_input('Index Number?: ')
+        read(item_index)
+    elif function_code == 'P':
+        list_all_items()
+    elif function_code == 'Q':
+        return False
+    else:
+        print('Unknown Option')
+    return True
+
+
 def test():
     create("purple sox")
-
     create("red cloak")
 
     print(read(0))
     print(read(1))
 
     update(0, "purple socks")
+
     destroy(1)
-    list_all_items()
+
     print(read(0))
-    print(read(1))
-
-
-def mark_completed(index):
-    checklist[index] = green('√') + checklist[index]
+    # Your testing code here
+    # ...
+    # Call your new function with the appropriate value
+    select("C")
+    # View the results
+    list_all_items()
+    # Call function with new value
+    select("R")
+    # View results
+    list_all_items()
 
 
 test()
+running = True
+
+while running:
+    selection = user_input(
+        "Press C to add to list, R to Read from list and P to display list and Q to quit: ")
+    running = select(selection)
