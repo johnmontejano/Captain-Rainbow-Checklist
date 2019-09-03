@@ -67,7 +67,7 @@ def test():
     update(0, "purple socks")
 
     destroy(1)
-
+    mark_completed(0)
     print(read(0))
     list_all_items()
 
