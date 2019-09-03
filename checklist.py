@@ -38,19 +38,25 @@ def user_input(prompt):
 
 
 def select(function_code):
-    if function_code == 'C':
-        input_item = user_input('Input item:')
-        create(input_item)
-    elif function_code == 'R':
-        item_index = user_input('Index Number?: ')
-        read(item_index)
-    elif function_code == 'P':
-        list_all_items()
-    elif function_code == 'Q':
-        return False
-    else:
-        print('Unknown Option')
-    return True
+	if function_code == "C":
+		input_item = user_input("Input item:")
+		create(input_item)
+
+	elif function_code == "R":
+		item_index = user_input("Index Number?")
+		if int(item_index):
+			read(item_index)
+
+	elif function_code == "P":
+		list_all_items()
+
+	elif function_code == "Q":
+		return False
+
+	else:
+		print("Unknown Option")
+		return True
+
 
 
 def test():
@@ -65,18 +71,7 @@ def test():
     destroy(1)
 
     print(read(0))
-    # Your testing code here
-    # ...
-    # Call your new function with the appropriate value
-    select("C")
-    # View the results
     list_all_items()
-    # Call function with new value
-    select("R")
-    # View results
-    list_all_items()
-
-
 test()
 running = True
 
